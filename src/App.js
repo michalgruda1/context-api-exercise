@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PlaylistsPage from './pages/PlaylistsPage';
+import UserName from './components/UserName';
 
 ReactDOM.render(
 <React.StrictMode>
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Playlists of <span class="userName">username</span>
+        Playlists of <UserName />
       </header>
       <div>
         <PlaylistsPage />
