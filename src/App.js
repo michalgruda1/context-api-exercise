@@ -1,17 +1,20 @@
 import './App.css';
 import PlaylistsPage from './pages/PlaylistsPage';
 import UserName from './components/UserName';
+import UserContextProvider from './context/UserContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Playlists of <UserName />
-      </header>
-      <div>
-        <PlaylistsPage />
+    <UserContextProvider>
+      <div className="App">
+        <header className="App-header">
+          Playlists of <UserName />
+        </header>
+        <div>
+          <PlaylistsPage />
+        </div>
       </div>
-    </div>
+    </UserContextProvider>
   );
 }
 

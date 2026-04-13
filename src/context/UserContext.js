@@ -1,14 +1,37 @@
-import React, {createContext} from 'react';
+import axios from 'axios';
+import {createContext, useCallback, useEffect, useState} from 'react';
 
 export const UserContext = createContext();
 
-const UserProvider = ({children}) => {
-    const user = { name: 'Ktośtam', id: 0}
-    return (
-    <UserContext.Provider value={user}>
-        {children}
+const UserContextProvider = ({children}) => {
+  const empty = {
+    data: [
+      {
+        creator: {
+          name: ''
+      }
+    }]
+  };
+  const [userState, setUserState] = useState(empty);
+
+  const fetchUserData = useCallback(() => {
+    axios.get('user/2529/playlists')
+      .then(response => {
+        setUserState(response.data);
+        console.log(response.data);
+      })
+      .catch(error => console.log('error: ', error));
+  },[]);
+
+  useEffect(() => {
+    fetchUserData();
+  },[fetchUserData]);
+
+  return (
+    <UserContext.Provider value={userState}>
+      {children}
     </UserContext.Provider>
-    )
+  )
 };
 
-export default UserProvider;
+export default UserContextProvider;
