@@ -1,18 +1,21 @@
-import { useRef } from "react";
+import Tracks from './Tracks';
 
 const PlayList = (props) => {
-    const songs = useRef(props.playlist.songs);
-<>
-    <image className={props.image.class} width={props.image.width} height={props.image.width} src={props.image.source} alt="Playlist image"/>
-    <div className="playlistName">
-        {props.playlist.name}
-    </div>
-    <div className="playlistNoOfSongs">
-        {songs.length}
-    </div>
-    <div className="playlistSongs">
-        {songs}
-    </div>
-</>
+    console.log('Tracks props: ', props);
+
+    const {id,title,pictureSmall,tracklistUrl,noOfTracks} = props;
+    const url = tracklistUrl ?? `playlist/${id}/tracks`;
+
+    return (
+    <>
+        <img className="pictureSmall" src={pictureSmall} />
+        <div className="playlistName">
+            {title}
+        </div>
+        <div className="playlistNoOfSongs">
+            {noOfTracks}
+        </div>
+        <Tracks url={url}/>
+    </>)
 }
 export default PlayList;
