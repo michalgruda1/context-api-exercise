@@ -1,19 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const UserName = (props) => {
-  const {userName, setUserName} = useState("");
-  const creator = useMemo(() => getUserName(),[]);
-  if (!!userName) {
-    setUserName(creator);
-  }
-  return userName;
-}
+const UserName = () => {
+  const [userName, setUserName] = useState("");
 
-function getUserName() {
-  axios.get('https://api.deezer.com/playlist/7620623')
-  .then(data => data.data[0].creator)
-  .catch(error => console.log('error: ',error));
+  useEffect(() => {
+    axios.get('/playlist/7620623')
+      .then(response => {
+        setUserName(response.data.creator.name);
+      })
+      .catch(error => console.log('error: ', error));
+  }, []);
+
+  return userName;
 }
 
 export default UserName;
