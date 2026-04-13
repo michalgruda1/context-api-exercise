@@ -1,14 +1,6 @@
 import './App.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
 import PlaylistsPage from './pages/PlaylistsPage';
 import UserName from './components/UserName';
-
-ReactDOM.render(
-<React.StrictMode>
-  <App />
-</React.StrictMode>
-)
 
 function App() {
   return (
