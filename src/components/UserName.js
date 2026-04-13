@@ -1,18 +1,10 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const UserName = () => {
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    axios.get('/playlist/7620623')
-      .then(response => {
-        setUserName(response.data.creator.name);
-      })
-      .catch(error => console.log('error: ', error));
-  }, []);
-
-  return userName;
+  const context = useContext(UserContext);
+  console.log('UserName context: ', context);
+  return context.data[0].creator.name;
 }
 
 export default UserName;
