@@ -1,0 +1,29 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "jsxSingleQuote": true,
+  "importOrder": [
+    "^react/(.*)$",
+    "^@alis/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "embeddedLanguageFormatting": "auto",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "useTabs": false,
+  "bracketSameLine": false,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": { "parser": "typescript" }
+    }
+  ]
+}
+ 
