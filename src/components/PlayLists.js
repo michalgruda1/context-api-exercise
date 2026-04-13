@@ -1,4 +1,4 @@
-import PlayList from 'PlayList';
+import PlayList from './PlayList';
 
 const PlayLists = (props) => {
     return (

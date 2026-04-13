@@ -1,9 +1,9 @@
-import { useContext } from "react"
+import React, { useContext } from 'react';
 import { UserContext } from "../context/UserContext"
-import PlayLists from "PlayLists"
+import PlayLists from "../components/PlayLists"
 
 const PlaylistsPage = () => {
-  const { user } = useContext(UserContext)
+  useContext(UserContext)
 return (
   <header className="App-header">
     <PlayLists />
