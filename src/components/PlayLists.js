@@ -3,8 +3,8 @@ import PlayList from './PlayList';
 const PlayLists = (props) => {
     return (
         <>
-        <div class="header">Playlists of <span class="userName">username</span></div>
-        <div class="playlists">
+        <div className="header">Playlists of <span className="userName">username</span></div>
+        <div className="playlists">
             {props.playlists?.map(el => {
                 return <PlayList key={el.id} />
             })};
