@@ -1,4 +1,4 @@
-import Tracks from './Tracks';
+import Songs from './Songs';
 
 const PlayList = props => {
   console.log('Tracks props: ', props);
@@ -10,7 +10,7 @@ const PlayList = props => {
       <img className='pictureSmall' src={pictureSmall} alt={title} />
       <div className='playlistName'>{title}</div>
       <div className='playlistNoOfSongs'>{noOfTracks}</div>
-      <Tracks url={url} />
+      <Songs playlistUrl={url} playlistId={id} />
     </div>
   );
 };

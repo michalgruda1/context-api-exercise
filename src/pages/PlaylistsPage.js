@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 
 import PlayLists from '../components/PlayLists';
-import { UserContext } from '../context/UserContext';
+import { PlaylistsContext } from '../context/PlaylistsContext';
 
 const PlaylistsPage = () => {
-  const context = useContext(UserContext);
+  const context = useContext(PlaylistsContext);
   console.log('PlaylistsPage context.data', context.data);
   return (
     <main>

@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { UserContext } from '../context/UserContext';
+
+import { PlaylistsContext } from '../context/PlaylistsContext';
 
 const UserName = () => {
-  const context = useContext(UserContext);
+  const context = useContext(PlaylistsContext);
   console.log('UserName context: ', context);
   return context.data[0].creator.name;
-}
+};
 
 export default UserName;
