@@ -1,21 +1,17 @@
 import Tracks from './Tracks';
 
-const PlayList = (props) => {
-    console.log('Tracks props: ', props);
+const PlayList = props => {
+  console.log('Tracks props: ', props);
 
-    const {id,title,pictureSmall,tracklistUrl,noOfTracks} = props;
-    const url = tracklistUrl ?? `playlist/${id}/tracks`;
+  const { id, title, pictureSmall, tracklistUrl, noOfTracks, url = tracklistUrl ?? `playlist/${id}/tracks` } = props;
 
-    return (
+  return (
     <>
-        <img className="pictureSmall" src={pictureSmall} />
-        <div className="playlistName">
-            {title}
-        </div>
-        <div className="playlistNoOfSongs">
-            {noOfTracks}
-        </div>
-        <Tracks url={url}/>
-    </>)
-}
+      <img className='pictureSmall' src={pictureSmall} alt={title} />
+      <div className='playlistName'>{title}</div>
+      <div className='playlistNoOfSongs'>{noOfTracks}</div>
+      <Tracks url={url} />
+    </>
+  );
+};
 export default PlayList;

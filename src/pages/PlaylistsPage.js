@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
-import { UserContext } from "../context/UserContext"
-import PlayLists from "../components/PlayLists"
+
+import PlayLists from '../components/PlayLists';
+import { UserContext } from '../context/UserContext';
 
 const PlaylistsPage = () => {
   const context = useContext(UserContext);
-
   console.log('PlaylistsPage context.data', context.data);
   return (
-    <header className="App-header">
-      <PlayLists playlists={context.data}/>
-    </header>
-)}
+    <main>
+      <PlayLists playlists={context.data} />
+    </main>
+  );
+};
 
 export default PlaylistsPage;
