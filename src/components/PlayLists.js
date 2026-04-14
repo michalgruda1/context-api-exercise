@@ -15,6 +15,9 @@ const PlayLists = props => {
               key={el.id}
               title={el.title}
               pictureSmall={el.picture_small}
+              pictureMedium={el.picture_medium}
+              pictureBig={el.picture_big}
+              pictureXl={el.picture_xl}
               tracklistUrl={url}
               noOfTracks={el.nb_tracks}
             />

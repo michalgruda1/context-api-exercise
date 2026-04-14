@@ -1,16 +1,41 @@
+import { useState } from 'react';
 import Songs from './Songs';
 
 const PlayList = props => {
   console.log('PlayList props: ', props);
 
-  const { id, title, pictureSmall, tracklist, noOfTracks, url = tracklist ?? `playlist/${id}/tracks` } = props;
+  const [expanded, setExpanded] = useState(false);
+
+  const {
+    id,
+    title,
+    pictureSmall,
+    pictureMedium,
+    pictureBig,
+    pictureXl,
+    tracklist,
+    noOfTracks,
+    url = tracklist ?? `playlist/${id}/tracks`
+  } = props;
 
   return (
-    <div className='playlist-card'>
-      <img className='pictureSmall' src={pictureSmall} alt={title} />
+    <div
+      className='playlist-card'
+      onClick={() => setExpanded(!expanded)}
+    >
+      <img
+        className='pictureSmall'
+        src={pictureXl ?? pictureBig ?? pictureMedium ?? pictureSmall}
+        alt={title}
+      />
       <div className='playlistName'>{title}</div>
       <div className='playlistNoOfSongs'>{noOfTracks}</div>
-      <Songs playlistUrl={url} />
+      {expanded && (
+        <Songs
+          playlistUrl={url}
+          playlistTitle={title}
+        />
+      )}
     </div>
   );
 };

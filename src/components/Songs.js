@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import Song from './Song';
 
 const Songs = props => {
-  const playlistUrl = props.playlistUrl;
-  console.log('playlistUrl: ', playlistUrl);
-
+  console.log('Song props: ', props);
+  const [playlistUrl, playlistTitle] = props;
   const [songs, setSongs] = useState([]);
 
   const fetchSongsData = useCallback(playlistUrl => {
@@ -21,13 +21,18 @@ const Songs = props => {
     fetchSongsData(playlistUrl);
   }, [fetchSongsData, playlistUrl]);
 
-  return songs.map(song => {
-    return (
-      <>
-        <div>{song?.name}</div>
-      </>
-    );
-  });
+  return songs.map(song => (
+    <>
+      <h2>{playlistTitle}</h2>
+      <Song
+        key={song.id}
+        title={song.title}
+        album={song.album.title}
+        artist={song.artist}
+        length={song.length}
+      />
+    </>
+  ));
 };
 
 export default Songs;
