@@ -10,6 +10,7 @@
   "js/ts.suggest.autoImports": true,
   "editor.suggestSelection": "first",
   "editor.codeActionsOnSave": {
-    "source.addMissingImports": "explicit"
+    "source.addMissingImports": "explicit",
+    "source.fixAll.eslint": "explicit"
   }
 }

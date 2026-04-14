@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
   js.configs.recommended,
@@ -33,7 +34,9 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'warn'
+      'react/prop-types': 'warn',
+      'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }]
     }
-  }
+  },
+  prettierConfig
 ];
