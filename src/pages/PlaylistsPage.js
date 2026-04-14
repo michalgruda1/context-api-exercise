@@ -5,10 +5,11 @@ import { PlaylistsContext } from '../context/PlaylistsContext';
 
 const PlaylistsPage = () => {
   const context = useContext(PlaylistsContext);
-  console.log('PlaylistsPage context.data', context.data);
+
+  console.log('PlaylistsPage context.playlists', context?.playlists);
   return (
     <main>
-      <PlayLists playlists={context.data} />
+      <PlayLists playlists={context?.playlists} />
     </main>
   );
 };

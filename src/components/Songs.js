@@ -1,27 +1,30 @@
 import axios from 'axios';
-import { useContext, useEffect } from 'react';
-
-import { PlaylistsContext } from '../context/PlaylistsContext';
+import { useCallback, useEffect, useState } from 'react';
 
 const Songs = props => {
-  const [playlistId, playlistUrl] = props;
+  const playlistUrl = props.playlistUrl;
+  console.log('playlistUrl: ', playlistUrl);
 
-  const context = useContext(PlaylistsContext);
+  const [songs, setSongs] = useState([]);
 
-  const tracks = useEffect(() => {
+  const fetchSongsData = useCallback(playlistUrl => {
     axios
       .get(playlistUrl)
       .then(result => {
-        const songs = result.data;
-        context.playlists.find(pl => pl.id == playlistId).songs == songs;
+        console.log('result: ', result);
+        setSongs(result?.data.songs ?? []);
       })
       .catch(error => console.log(error));
-  });
+  }, []);
 
-  tracks.array.forEach(track => {
+  useEffect(() => {
+    fetchSongsData(playlistUrl);
+  }, [fetchSongsData, playlistUrl]);
+
+  return songs.map(song => {
     return (
       <>
-        <div>{track.name}</div>
+        <div>{song?.name}</div>
       </>
     );
   });

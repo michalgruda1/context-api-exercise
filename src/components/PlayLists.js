@@ -1,18 +1,17 @@
-import { useMemo } from 'react';
-
 import PlayList from './PlayList';
+import { NormalizeUrlForCorsHack } from './Utils';
 
 const PlayLists = props => {
   console.log('PlayLists props:', props);
 
-  const url = useMemo(url => NormalizeUrlForCorsHack(url), []);
-
   return (
     <>
       <div className='playlists'>
-        {props.playlists?.map(el => {
+        {props?.playlists?.map(el => {
+          const url = NormalizeUrlForCorsHack(el.tracklistUrl);
           return (
             <PlayList
+              id={el.id}
               key={el.id}
               title={el.title}
               pictureSmall={el.picture_small}
@@ -27,9 +26,3 @@ const PlayLists = props => {
 };
 
 export default PlayLists;
-
-function NormalizeUrlForCorsHack(urlBefore) {
-  const regex = /https?:\/\/api.deezer.com\/(.)+/i;
-  const urlAfter = urlBefore.match(regex);
-  return urlAfter;
-}
