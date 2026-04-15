@@ -5,16 +5,17 @@ const Song = props => {
 
   return (
     <>
-      <div className='song_index'>{index}.</div>
       <div>
+        <span className='song_index'>{index + 1}. </span>
         <b>{artist}</b>
-      </div>
-      <div>
+        <span className='verticalTextSeparator'>&nbsp;| </span>
         <i>
           {title} - <small>{FormatTime(duration)}</small>
         </i>
+        <span className='verticalTextSeparator'> | </span>
+        <span className='cdIcon'>💿</span>
+        <small>{album}</small>
       </div>
-      <div>{album}</div>
     </>
   );
 };

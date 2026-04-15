@@ -29,7 +29,9 @@ main {
   background: #1e1e1e;
   border-radius: 8px;
   padding: 1rem;
-  transition: background 0.2s, box-shadow 0.3s;
+  transition:
+    background 0.2s,
+    box-shadow 0.3s;
   cursor: pointer;
 }
 .playlist-card:hover {
@@ -41,6 +43,12 @@ main {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   animation: cardExpand 0.35s ease forwards;
 }
+.playlist-card.collapsing {
+  grid-column: span 2;
+  background: #282828;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  animation: cardCollapse 0.35s ease forwards;
+}
 
 @keyframes cardExpand {
   from {
@@ -48,6 +56,15 @@ main {
   }
   to {
     clip-path: inset(0 0% 0 0 round 8px);
+  }
+}
+
+@keyframes cardCollapse {
+  from {
+    clip-path: inset(0 0% 0 0 round 8px);
+  }
+  to {
+    clip-path: inset(0 50% 0 0 round 8px);
   }
 }
 
@@ -59,6 +76,10 @@ main {
   display: block;
 }
 
+.playlistName::before {
+  content: '🎵 ';
+}
+
 .playlistName {
   margin-top: 0.75rem;
   font-weight: 600;
@@ -66,6 +87,17 @@ main {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: color-mix(in srgb, currentColor 40%, black);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem 0.5rem;
+}
+
+.cdIcon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .playlistNoOfSongs {
@@ -73,9 +105,7 @@ main {
   font-size: 0.78rem;
   color: #b3b3b3;
 }
-.playlistNoOfSongs::before {
-  content: '🎵 ';
-}
+
 .playlistNoOfSongs::after {
   content: ' tracks';
 }
@@ -99,6 +129,11 @@ main {
   border-top-color: #1db954;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
+}
+
+.verticalTextSeparator {
+  color: color-mix(in srgb, currentColor 50%, black);
+  white-space: pre;
 }
 
 @keyframes spin {
