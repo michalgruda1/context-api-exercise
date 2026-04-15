@@ -20,7 +20,7 @@ const PlayList = props => {
 
   return (
     <div
-      className='playlist-card'
+      className={`playlist-card${expanded ? ' expanded' : ''}`}
       onClick={() => setExpanded(!expanded)}
     >
       <img

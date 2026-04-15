@@ -29,11 +29,26 @@ main {
   background: #1e1e1e;
   border-radius: 8px;
   padding: 1rem;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.3s;
   cursor: pointer;
 }
 .playlist-card:hover {
   background: #282828;
+}
+.playlist-card.expanded {
+  grid-column: span 2;
+  background: #282828;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  animation: cardExpand 0.35s ease forwards;
+}
+
+@keyframes cardExpand {
+  from {
+    clip-path: inset(0 50% 0 0 round 8px);
+  }
+  to {
+    clip-path: inset(0 0% 0 0 round 8px);
+  }
 }
 
 .pictureSmall {
