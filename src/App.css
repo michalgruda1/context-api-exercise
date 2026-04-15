@@ -70,3 +70,24 @@ main {
   font-size: 0.8rem;
   color: #1db954;
 }
+
+.song_index {
+  font-size: smaller;
+  color: dimgrey;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  margin: 0.75rem auto;
+  border: 3px solid #282828;
+  border-top-color: #1db954;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

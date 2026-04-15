@@ -30,12 +30,7 @@ const PlayList = props => {
       />
       <div className='playlistName'>{title}</div>
       <div className='playlistNoOfSongs'>{noOfTracks}</div>
-      {expanded && (
-        <Songs
-          playlistUrl={url}
-          playlistTitle={title}
-        />
-      )}
+      {expanded && <Songs playlistUrl={url} />}
     </div>
   );
 };
